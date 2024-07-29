@@ -154,6 +154,15 @@ import SoundEffects from '@js/SoundEffects';
       ? nameListTextArea.value.split(/\n/).filter((name) => Boolean(name.trim()))
       : [];
     slot.shouldRemoveWinnerFromNameList = removeNameFromListCheckbox.checked;
+
+    const nameList = document.querySelector('.name__list');
+    nameList!.innerHTML = 
+      `<ul>
+        ${slot.names.map((item) => (
+          `<li>${item}</li>`
+        )).join('')}
+      </ul>`
+      
     soundEffects.mute = !enableSoundCheckbox.checked;
     onSettingsClose();
   });
