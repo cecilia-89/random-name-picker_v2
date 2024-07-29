@@ -127,15 +127,8 @@
   }
 }
 
-.iteration {
-  border: 0;
-  text-align: center;
-  outline: 0;
-  display: block;
-}
 
-
-#draw-button, .iteration {
+#draw-button {
   width: $draw-button-width;
   display: block;
   max-width: 100%;

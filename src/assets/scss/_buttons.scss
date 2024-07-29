@@ -30,6 +30,18 @@
   }
 }
 
+.iteration {
+  border: 0;
+  width: 100%;
+  padding: 1rem 0.625rem;
+  border-radius: 10px;
+  background: $color-white;
+  color: $color-black;
+  cursor: default;
+  display: block;
+  outline: 0;
+}
+
 .solid-button--danger {
   background-color: $color-button-danger-background;
   color: $color-button-text;
