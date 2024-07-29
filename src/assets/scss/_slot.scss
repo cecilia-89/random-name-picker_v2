@@ -136,6 +136,7 @@
 
 #draw-button, .iteration {
   width: $draw-button-width;
+  display: block;
   max-width: 100%;
   margin: $draw-button-margin-top auto 0;
   position: relative;
