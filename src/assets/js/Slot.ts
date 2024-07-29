@@ -70,25 +70,50 @@ export default class Slot {
     this.onSpinStart = onSpinStart;
     this.onSpinEnd = onSpinEnd;
     this.onNameListChanged = onNameListChanged;
+    let iterationNumber = 1;
 
     // Create reel animation
-    this.reelAnimation = this.reelContainer?.animate(
-      [
-        { transform: 'none', filter: 'blur(0)' },
-        { filter: 'blur(1px)', offset: 0.5 },
-        // Here we transform the reel to move up and stop at the top of last item
-        // "(Number of item - 1) * height of reel item" of wheel is the amount of pixel to move up
-        // 7.5rem * 16 = 120px, which equals to reel item height
-        { transform: `translateY(-${(this.maxReelItems - 1) * (7.5 * 16)}px)`, filter: 'blur(0)' }
-      ],
-      {
-        duration: this.maxReelItems * 250, // 200ms for 1 item
-        easing: 'ease-in-out',
-        iterations: 1
-      }
-    );
+    const input = document.querySelector('.iteration') as HTMLInputElement;
+    input.addEventListener('input', () => {
+      iterationNumber = Number(input.value)? Number(input.value) : 1
 
-    this.reelAnimation?.cancel();
+      // Create reel animation
+      this.reelAnimation = this.reelContainer?.animate(
+        [
+          { transform: 'none', filter: 'blur(0)' },
+          { filter: 'blur(1px)', offset: 0.5 },
+          // Here we transform the reel to move up and stop at the top of last item
+          // "(Number of item - 1) * height of reel item" of wheel is the amount of pixel to move up
+          // 7.5rem * 16 = 120px, which equals to reel item height
+          { transform: `translateY(-${(this.maxReelItems - 1) * (7.5 * 16)}px)`, filter: 'blur(0)' }
+        ],
+        {
+          duration: this.maxReelItems * 250, // 250ms for 1 item
+          easing: 'linear',
+          iterations: iterationNumber,
+        }
+      );
+
+      this.reelAnimation?.cancel();
+      })
+
+      this.reelAnimation = this.reelContainer?.animate(
+        [
+          { transform: 'none', filter: 'blur(0)' },
+          { filter: 'blur(1px)', offset: 0.5 },
+          // Here we transform the reel to move up and stop at the top of last item
+          // "(Number of item - 1) * height of reel item" of wheel is the amount of pixel to move up
+          // 7.5rem * 16 = 120px, which equals to reel item height
+          { transform: `translateY(-${(this.maxReelItems - 1) * (7.5 * 16)}px)`, filter: 'blur(0)' }
+        ],
+        {
+          duration: this.maxReelItems * 250, // 250ms for 1 item
+          easing: 'linear',
+          iterations: iterationNumber,
+        }
+      );
+
+      this.reelAnimation?.cancel();
   }
 
   /**
